@@ -79,11 +79,11 @@
 
 (defn success-page
   [visibility]
-  [:div {:id "success" :style visibility}
-   [:h4 {:class "tc"}
+  [:div {:id "success" :class visibility}
+   [:h4 {:class "tc mb3"}
     "File successfuly uploaded"]
    [:p "Thank you for using this form and sending your file into the void, you're awesome!"]
-   [:p "-- The Developer"]])
+   [:p {:class "fl"}"&mdash; Mr Pepe"]])
 
 (def input-field-style "input-reset ba b--black-20 pa2 mb2 db w-100 code f4")
 
@@ -101,7 +101,7 @@
        [:h1 {:class "f2 fl athelas i fw2"} "pepe."]
        [:h1 {:class "f2 fr fw2 tracking-mega"}
         [:a {:href "https://github.com/jcpsantiago"}
-         [:p {:class "dn"} "hidden :D"]
+         [:p {:class "dn"} "hidden :D"] ;; helps with alignment
          [:i {:class "black-20 hover-black fab fa-github"}]]
         [:a {:href "https://www.linkedin.com/in/jcpsantiago/"}
          [:i {:class "black-20 hover-black fab fa-linkedin pl2"}]]]]]
@@ -117,7 +117,7 @@
        [:h2 {:class "f6 athelas ttu trackin fw4 gray mb0 pb0"} "useless clojure things"]
        [:h1 {:class "f1 athelas tracking lh-title mv0"} "The Google Drive void"]]
 
-      [:div {:class "lh-copy pb3 measure"}
+      [:div {:class (str "lh-copy pb3 measure " inner-viz)}
        [:p {:class "f4 athelas"}
            "I lose files in Google Drive all the time. Someone sends me a link,
             I open it and it's gone forever. Unfortunately, it's a useful service,
@@ -128,12 +128,12 @@
       [:form {:id "uploadform" :class "w-100 measure mb5 avenir"
               :method "POST" :enctype "multipart/form-data"}
        (anti-forgery-field)
-       [:div {:class "forminner" :style inner-viz}
+       [:div {:class (str "forminner " inner-viz)}
 
         ;; -- name --
         [:div {:class "mt2"}
          [:label {:class "f6 b db mb2" :for "name"} "Your name"]
-         [:input {:id "name" :type "text" :name "name" :autofocus "" :required ""
+         [:input {:id "name" :type "text" :name "name" :required ""
                   :class input-field-style}]]
 
         ;; -- random number in european format --
@@ -147,17 +147,17 @@
         ;; -- csv input --
          [:div {:class "mt3"}
           ;; https://stackoverflow.com/questions/31937112/html-form-cannot-post-file-content
-          [:label {:class "f6 b db mb2" :for "choose-file"} "Your important work spreadsheet"]
+          [:label {:class "f6 b db mb3" :for "choose-file"} "Your important work spreadsheet"]
 
           ;; -- https://jsfiddle.net/m7eqj9ku/1/
-          [:span {:class "file-01 mt2"}
+          [:span {:class "file-01"}
            [:input {:id "file-01" :type "file" :name "choose-file" :required ""
                     :accept ".xls, .xlsx, .ods, .csv, .tsv, .pages,
                              application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
                              application/vnd.ms-excel, text/csv,
                              application/vnd.oasis.opendocument.spreadsheet"
-                    :class "dn w-100 file-01 mt2"}]]
-          [:label {:class "b ph3 pv2 ba b--black bg-transparent pointer f6 mt2" :for "file-01"}
+                    :class "dn w-100 file-01"}]]
+          [:label {:class "b ph3 pv2 ba b--black bg-transparent pointer f6" :for "file-01"}
            [:span "Upload a file"]]]]
 
           ;; -- submit button --
@@ -171,5 +171,5 @@
 
     ;; -- show the loading "spinner" after clicking send --
     [:script submit-spinner]
-    [:script upload-button-jq]
+    ;;[:script upload-button-jq]
     [:script upload-filename-js]))

@@ -9,12 +9,10 @@
             [ring.middleware.defaults :refer :all]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
-            [clojure.pprint :refer [pprint]]
             [cheshire.core :as json]
             [clojure.tools.logging :as log])
   (:gen-class))
 
-;;(filter #(nil? (val %1)) {:a g-client-id :b g-client-id-non})
 (def port (Integer/parseInt (or (System/getenv "PORT") "3000")))
 (def hook-url (System/getenv "SLACK_WEBHOOK_URL"))
 (def g-client-id (System/getenv "GOOGLE_CLIENT_ID"))
@@ -88,14 +86,14 @@
   (java.io.File/createTempFile filename extension))
 
 (defroutes app-routes
-  (GET "/" [] (home-page "display:block" "display:none"))
+  (GET "/" [] (home-page "db" "dn"))
   (POST "/" req
        (let [params (get req :multipart-params)
              name (params "name")
-             content-type (:content-type (params "uploaded-file"))
+             content-type (:content-type (params "choose-file"))
              file-extension (re-find #"\.(csv|xls|xlsx|tsv|ods)$"
-                                     (:filename (params "uploaded-file")))
-             file (:tempfile (params "uploaded-file"))
+                                     (:filename (params "choose-file")))
+             file (:tempfile (params "choose-file"))
              main-file-name (str name "_stuff" (first file-extension))
              local-temp-file (create-temp-file "temp-randnumber-file" ".txt")
              rand-number (params "rand-number")
@@ -122,7 +120,7 @@
 
            ;; show success page :D
            (log/info "Showing success page")
-           (home-page "display:none" "display:block"))))
+           (home-page "dn" "db"))))
 
   (route/resources "/")
   (route/not-found "404"))
