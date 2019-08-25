@@ -79,11 +79,11 @@
 
 (defn success-page
   [visibility]
-  [:div {:id "success" :style visibility}
-   [:h4 {:class "tc"}
+  [:div {:id "success" :class visibility}
+   [:h4 {:class "tc mb3"}
     "File successfuly uploaded"]
    [:p "Thank you for using this form and sending your file into the void, you're awesome!"]
-   [:p "-- The Developer"]])
+   [:p {:class "fl"}"&mdash; Mr Pepe"]])
 
 (def input-field-style "input-reset ba b--black-20 pa2 mb2 db w-100 code f4")
 
@@ -117,7 +117,7 @@
        [:h2 {:class "f6 athelas ttu trackin fw4 gray mb0 pb0"} "useless clojure things"]
        [:h1 {:class "f1 athelas tracking lh-title mv0"} "The Google Drive void"]]
 
-      [:div {:class "lh-copy pb3 measure"}
+      [:div {:class (str "lh-copy pb3 measure " inner-viz)}
        [:p {:class "f4 athelas"}
            "I lose files in Google Drive all the time. Someone sends me a link,
             I open it and it's gone forever. Unfortunately, it's a useful service,
@@ -128,7 +128,7 @@
       [:form {:id "uploadform" :class "w-100 measure mb5 avenir"
               :method "POST" :enctype "multipart/form-data"}
        (anti-forgery-field)
-       [:div {:class "forminner" :style inner-viz}
+       [:div {:class (str "forminner " inner-viz)}
 
         ;; -- name --
         [:div {:class "mt2"}
