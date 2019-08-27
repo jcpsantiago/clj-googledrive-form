@@ -61,18 +61,12 @@
   var exampleForm = document.querySelector('#uploadform')
   var exampleLoader = new LoadingSpinner(exampleForm, '...')")
 
-(def upload-button-jq
-  "$('#choose-file-btn').click(function () {
-   $('#choose-file').trigger('click')
-   });")
-
 (def upload-filename-js
   (str "$('input[type=file]').change(function(){
   var filename = $(this).val().split(" (str "'\\") (str "\\'") ").pop();
   var idname = $(this).attr('id');
   console.log($(this));
   console.log(filename);
-  console.log(idname);
   $('span.'+idname).next().find('span').html(filename);
 });"))
                                  ;
@@ -90,7 +84,8 @@
 (defn home-page [inner-viz success-viz]
   "Landing page"
   (html5 {:lang "en"}
-         [:head (include-css "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css")
+         [:head (include-css "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+                              "/css/style.css")
                 (include-js "https://kit.fontawesome.com/8a9f12dee1.js"
                             "https://code.jquery.com/jquery-3.4.1.min.js")
           [:title "The Google Drive void"]]
