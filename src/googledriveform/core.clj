@@ -108,7 +108,7 @@
 
            ;; save form field as file
            (write-to-file local-temp-file rand-number)
-           (log/info (str "Uploading balance from " name " to google drive"))
+           (log/info (str "Uploading random number from " name " to google drive"))
            (upload-to-drive access-token (str name "_balance.txt")
                             g-parentfolder-id local-temp-file "text/plain")
            (.delete local-temp-file)
