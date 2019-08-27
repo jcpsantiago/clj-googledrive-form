@@ -92,13 +92,15 @@
   (html5 {:lang "en"}
          [:head (include-css "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css")
                 (include-js "https://kit.fontawesome.com/8a9f12dee1.js"
-                            "https://code.jquery.com/jquery-3.4.1.min.js")]
+                            "https://code.jquery.com/jquery-3.4.1.min.js")
+          [:title "The Google Drive void"]]
      [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
 
     [:body
      [:div {:class "w-100 fixed bg-yellow"}
       [:div {:class "w-70 center"}
-       [:h1 {:class "f2 fl athelas i fw2"} "pepe."]
+       [:h1 {:class "f2 fl athelas i fw2"}
+        [:a {:class "link black" :href "/"} "pepe."]]
        [:h1 {:class "f2 fr fw2 tracking-mega"}
         [:a {:href "https://github.com/jcpsantiago"}
          [:p {:class "dn"} "hidden :D"] ;; helps with alignment
