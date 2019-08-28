@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jcpsantiago/controltower/tree/master.svg?style=svg)](https://circleci.com/gh/jcpsantiago/controltower/tree/master)
+
 # clj-googledrive-form
 
 Creating a form to upload files to Google Drive was useful for a project at work,
