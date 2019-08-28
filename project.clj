@@ -16,6 +16,7 @@
                  [ch.qos.logback/logback-classic "1.1.3"]]
   :main ^:skip-aot googledriveform.core
   :min-lein-version "2.0.0"
+  :plugins [[lein-cloverage "1.1.1"]]
   :uberjar-name "googledriveform.jar"
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
