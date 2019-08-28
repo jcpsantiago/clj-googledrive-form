@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/jcpsantiago/clj-googldrive-form/tree/master.svg?style=svg)](https://circleci.com/gh/jcpsantiago/clj-googldrive-form/tree/master)
+[![CircleCI](https://circleci.com/gh/jcpsantiago/clj-googledrive-form/tree/master.svg?style=svg)](https://circleci.com/gh/jcpsantiago/clj-googledrive-form/tree/master)
 
 # clj-googledrive-form
 
